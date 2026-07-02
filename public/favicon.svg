@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="5" fill="#0D1520"/>
+  <rect x="5" y="12" width="22" height="8" rx="1.5" fill="#F5C518"/>
+  <text x="16" y="18.4" font-family="'Courier New',monospace" font-size="6" font-weight="700"
+        text-anchor="middle" fill="#0D1520" letter-spacing="0.5">NEYRA</text>
+  <rect x="5" y="23.5" width="22" height="2" fill="#EC5A21"/>
+  <rect x="5" y="23.5" width="4" height="2" fill="#EC5A21"/>
+  <rect x="13" y="23.5" width="4" height="2" fill="#F4EFE6"/>
+  <rect x="21" y="23.5" width="4" height="2" fill="#F4EFE6"/>
+</svg>

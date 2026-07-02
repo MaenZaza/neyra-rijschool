@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder: de lesauto op een Nederlandse weg">
+  <rect width="1200" height="800" fill="#EAE2D3"/>
+  <!-- road -->
+  <rect y="520" width="1200" height="280" fill="#2A3646"/>
+  <g fill="#F5C518">
+    <rect x="80" y="650" width="120" height="14"/>
+    <rect x="320" y="650" width="120" height="14"/>
+    <rect x="560" y="650" width="120" height="14"/>
+    <rect x="800" y="650" width="120" height="14"/>
+    <rect x="1040" y="650" width="120" height="14"/>
+  </g>
+  <!-- car body -->
+  <g>
+    <rect x="360" y="380" width="480" height="150" rx="26" fill="#0D1520"/>
+    <path d="M440 380 q160 -120 320 0 z" fill="#16202E"/>
+    <rect x="470" y="320" width="260" height="70" rx="14" fill="#4A5568"/>
+    <circle cx="470" cy="530" r="52" fill="#16202E" stroke="#8A93A2" stroke-width="10"/>
+    <circle cx="730" cy="530" r="52" fill="#16202E" stroke="#8A93A2" stroke-width="10"/>
+    <rect x="820" y="430" width="30" height="30" rx="6" fill="#EC5A21"/>
+  </g>
+  <!-- plate -->
+  <rect x="520" y="470" width="160" height="40" rx="6" fill="#F5C518" stroke="#0D1520" stroke-width="3"/>
+  <text x="600" y="498" text-anchor="middle" font-family="monospace" font-size="22" font-weight="700" fill="#0D1520" letter-spacing="2">NEYRA</text>
+</svg>

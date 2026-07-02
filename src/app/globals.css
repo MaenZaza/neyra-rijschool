@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Neyra Rijschool — base styles & design-system helpers
+   --------------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+
+  /* Visible, consistent focus ring for keyboard users across the whole site. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-signal ring-offset-2 ring-offset-paper;
+  }
+
+  ::selection {
+    @apply bg-signal text-paper;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Horizontal page gutter + max width, shared by every section. */
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Small monospace label used above headings ("kicker"). */
+  .kicker {
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-kicker text-signal;
+  }
+
+  .kicker::before {
+    content: '';
+    @apply h-px w-8 bg-signal;
+  }
+
+  /* Dashed lane divider — echoes road lane markings. */
+  .lane-divider {
+    background-image: repeating-linear-gradient(
+      to right,
+      currentColor 0,
+      currentColor 24px,
+      transparent 24px,
+      transparent 48px
+    );
+    @apply h-[3px] w-full;
+  }
+
+  /* Animated moving lane line (respects reduced motion below). */
+  .lane-moving {
+    background-image: repeating-linear-gradient(
+      to right,
+      currentColor 0,
+      currentColor 24px,
+      transparent 24px,
+      transparent 48px
+    );
+    background-size: 48px 100%;
+    @apply h-[3px] w-full animate-lane-move;
+  }
+
+  /* Dutch licence-plate styled badge. */
+  .plate {
+    @apply inline-flex items-center gap-2 rounded-sm border-2 border-ink bg-plate px-3 py-1 font-mono text-sm font-bold tracking-widest text-ink;
+  }
+
+  /* Primary link/button hover underline that draws in. */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-0.5 w-0 bg-current transition-all duration-300;
+  }
+
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  /* Reveal-on-scroll starting state (JS adds .is-visible). */
+  .reveal {
+    @apply translate-y-4 opacity-0 transition-all duration-700 ease-out;
+    will-change: transform, opacity;
+  }
+
+  .reveal.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  /* Faint asphalt grain / grid used for texture on dark sections. */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(244, 239, 230, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244, 239, 230, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Respect users who prefer reduced motion — disable all non-essential motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    @apply translate-y-0 opacity-100 transition-none;
+  }
+}
