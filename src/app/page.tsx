@@ -1,4 +1,4 @@
-import { Hero } from '@/components/sections/Hero';
+import { Hero3D } from '@/components/sections/Hero3D';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { LessonTypes } from '@/components/sections/LessonTypes';
 import { WhyUs } from '@/components/sections/WhyUs';
@@ -13,7 +13,7 @@ import { CtaBand } from '@/components/sections/CtaBand';
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <Hero3D />
       <TrustBar />
       <LessonTypes />
       <WhyUs />

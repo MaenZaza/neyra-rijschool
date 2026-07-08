@@ -1,6 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ElementType,
+  type FC,
+  type ReactNode,
+  type Ref,
+} from 'react';
 import { cn } from '@/lib/utils';
 
 interface RevealProps {
@@ -43,13 +52,23 @@ export function Reveal({ children, className, as: Tag = 'div', delay = 0 }: Reve
     return () => observer.disconnect();
   }, []);
 
+  // Cast the polymorphic tag to a concrete component type. @react-three/fiber
+  // augments the global JSX IntrinsicElements, which makes a bare `ElementType`
+  // tag union three.js elements and collapse `children` to `never`.
+  const Component = Tag as unknown as FC<{
+    ref?: Ref<HTMLElement>;
+    style?: CSSProperties;
+    className?: string;
+    children?: ReactNode;
+  }>;
+
   return (
-    <Tag
+    <Component
       ref={ref}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       className={cn('reveal', visible && 'is-visible', className)}
     >
       {children}
-    </Tag>
+    </Component>
   );
 }

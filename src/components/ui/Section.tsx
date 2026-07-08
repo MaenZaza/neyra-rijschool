@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ElementType, FC, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 interface SectionProps {
@@ -24,13 +24,22 @@ export function Section({
   as: Tag = 'section',
   id,
 }: SectionProps) {
+  // Cast the polymorphic tag to a concrete component type. @react-three/fiber
+  // augments the global JSX IntrinsicElements, which makes a bare `ElementType`
+  // tag union three.js elements and collapse `children` to `never`.
+  const Component = Tag as unknown as FC<{
+    id?: string;
+    className?: string;
+    children?: ReactNode;
+  }>;
+
   return (
-    <Tag
+    <Component
       id={id}
       className={cn('relative overflow-hidden', tones[tone], 'py-16 sm:py-20 lg:py-28', className)}
     >
       <div className="container-page relative">{children}</div>
-    </Tag>
+    </Component>
   );
 }
 
